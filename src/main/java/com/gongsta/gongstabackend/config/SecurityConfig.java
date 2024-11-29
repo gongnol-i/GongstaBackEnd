@@ -13,6 +13,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 @Configuration
@@ -43,8 +44,8 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Collections.singletonList("http://zun2space.iptime.org:8010")); // 허용할 Origin
-        configuration.setAllowedMethods(Collections.singletonList("*")); // 모든 HTTP 메서드 허용
-        configuration.setAllowedHeaders(Collections.singletonList("*")); // 모든 헤더 허용
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS")); // 허용할 HTTP 메서드
+        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "Accept")); // 허용할 헤더
         configuration.setAllowCredentials(true); // 인증 정보 허용
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
